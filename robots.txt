@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+# Preview: all pages carry a noindex meta tag. This is not access control.

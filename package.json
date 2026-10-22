@@ -1,0 +1,14 @@
+{
+  "name": "f-tax-website",
+  "private": true,
+  "description": "Static website; Node dependencies are used only for browser quality checks.",
+  "scripts": {
+    "test": "node --test tests/contact.test.js tests/motion.test.js",
+    "test:browser": "node tests/browser.cjs",
+    "test:a11y": "node tests/accessibility.cjs"
+  },
+  "devDependencies": {
+    "axe-core": "4.10.3",
+    "playwright": "1.62.1"
+  }
+}

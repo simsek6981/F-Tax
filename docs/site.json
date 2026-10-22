@@ -1,0 +1,74 @@
+{
+  "base_url": "https://simsek6981.github.io/Yilmaz/",
+  "indexing": "preview",
+  "pages": [
+    {
+      "file": "index.html",
+      "label": "Startseite",
+      "title": "Steuerberatung in Leonding & Linz | F-Tax · Ferhat Yilmaz",
+      "description": "F-Tax Steuerberatung GmbH: persönliche Betreuung für Unternehmen und Privatpersonen in Leonding, Linz und Oberösterreich. Erstgespräch einfach anfragen.",
+      "type": "home",
+      "group": "home"
+    },
+    {
+      "file": "steuerberatung.html",
+      "label": "Steuerberatung",
+      "title": "Steuerberatung für Unternehmen & Privatpersonen | F-Tax Leonding",
+      "description": "Buchhaltung, Jahresabschlüsse, Steuererklärungen und Gründungsberatung mit Ferhat Yilmaz. Lohnverrechnung über Kooperationspartner. Leonding und digital.",
+      "type": "tax",
+      "group": "tax"
+    },
+    {
+      "file": "ueber-mich.html",
+      "label": "Über mich",
+      "title": "Ferhat Yilmaz · Steuerberater in Leonding | Über mich",
+      "description": "Lernen Sie Ferhat Yilmaz kennen: Geschäftsführer der F-Tax Steuerberatung GmbH, über zehn Jahre Unternehmensbetreuung und Steuerberaterprüfung im Oktober 2024.",
+      "type": "about",
+      "group": "about"
+    },
+    {
+      "file": "impressum.html",
+      "label": "Impressum",
+      "title": "Impressum | F-Tax Steuerberatung GmbH",
+      "description": "Unternehmens- und Kontaktangaben der F-Tax Steuerberatung GmbH in Leonding. Entwurf auf Basis der bereitgestellten Unterlagen.",
+      "type": "legal",
+      "group": "legal"
+    },
+    {
+      "file": "datenschutz.html",
+      "label": "Datenschutz",
+      "title": "Datenschutzerklärung | F-Tax Steuerberatung GmbH",
+      "description": "Hinweise zur Datenverarbeitung bei F-Tax, zur Terminanfrage mit EmailJS und zum vorgesehenen Hosting. Entwurf für den tatsächlichen Betrieb.",
+      "type": "legal",
+      "group": "legal"
+    },
+    {
+      "file": "404.html",
+      "label": "Seite nicht gefunden",
+      "title": "Seite nicht gefunden | F-Tax",
+      "description": "Die gesuchte Seite ist nicht verfügbar. Finden Sie Steuerberatung, Informationen über Ferhat Yilmaz und die Terminanfrage auf der Startseite.",
+      "type": "legal",
+      "group": "legal"
+    },
+    {
+      "file": "buchhaltung.html",
+      "type": "redirect",
+      "target": "steuerberatung.html#buchhaltung"
+    },
+    {
+      "file": "bilanzierung.html",
+      "type": "redirect",
+      "target": "steuerberatung.html#bilanzierung"
+    },
+    {
+      "file": "lohnverrechnung.html",
+      "type": "redirect",
+      "target": "steuerberatung.html#lohnverrechnung"
+    },
+    {
+      "file": "kontakt.html",
+      "type": "redirect",
+      "target": "index.html#termin"
+    }
+  ]
+}
