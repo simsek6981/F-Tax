@@ -886,7 +886,7 @@ section[id] {
   place-items: center;
   isolation: isolate;
 }
-.brand-portrait > svg {
+.brand-portrait > img {
   width: 32%;
   max-height: 53%;
   color: #9bb8d6;
@@ -1512,7 +1512,7 @@ section[id] {
   background: #303c4c;
   border: 1px solid #7a94b025;
 }
-.about-hero .brand-portrait > svg {
+.about-hero .brand-portrait > img {
   width: 37%;
 }
 .biography {
