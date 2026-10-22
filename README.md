@@ -18,7 +18,7 @@ Statische Website für Ferhat Yilmaz und die F-Tax Steuerberatung GmbH. **Premiu
 | `assets/fonts/` | Lokale variable Manrope-Schrift samt SIL-OFL-Lizenz |
 | `assets/email-templates/contact-notification.html` | HTML-Mail in der Schiefergrau-/Stahlblau-Palette |
 
-Das bereitgestellte Logo bleibt erhalten. Prozessoptimierung ist als ausführlicher Abschnitt der Steuerberatungsseite integriert. Für Ferhat Yilmaz gibt es kein freigegebenes Porträt; die Profilkomposition verwendet daher das echte Markenlogo. Die Fotos illustrieren das Thema und behaupten keine Kanzleiräume oder Mitarbeitenden.
+Das Logo verwendet die unveränderte Referenzgrafik, eingebettet in SVG mit einem Ausschnitt ohne äußeren Weißraum. Das freigestellte Originalporträt von Ferhat Yilmaz liegt dauerhaft unter `assets/images/ferhat-yilmaz.png` und wird im Startseiten-Hero ohne Beschnitt eingepasst. Prozessoptimierung ist als ausführlicher Abschnitt der Steuerberatungsseite integriert. Die übrigen Fotos illustrieren das Thema und behaupten keine Kanzleiräume oder Mitarbeitenden.
 
 ## Lokale Vorschau
 

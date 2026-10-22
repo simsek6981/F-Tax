@@ -884,7 +884,7 @@ section[id] {
   place-items: center;
   isolation: isolate;
 }
-.brand-portrait > svg {
+.brand-portrait > img {
   width: 32%;
   max-height: 53%;
   color: #9bb8d6;
@@ -1510,7 +1510,7 @@ section[id] {
   background: #303c4c;
   border: 1px solid #7a94b025;
 }
-.about-hero .brand-portrait > svg {
+.about-hero .brand-portrait > img {
   width: 37%;
 }
 .biography {
@@ -2820,4 +2820,23 @@ html:not(.js) .menu-toggle {
   .steps::after {
     display: none;
   }
+}
+
+/* Original reference logo, including its lettering and original colour. */
+.brand img { width: 58px; height: auto; }
+.masthead { padding-block: 10px; }
+.footer-logo img { width: 80px; filter: none; opacity: 1; }
+.footer-grid a[href^="tel:"],
+.footer-grid a[href^="mailto:"] { display: block; min-height: 24px; }
+.brand-portrait > img { height: auto; opacity: 1; transform: none; }
+.home-hero .hero-image img {
+  object-fit: contain;
+  object-position: center top;
+  padding-top: 12px;
+  filter: none;
+}
+.home-hero .hero-visual:hover img { transform: none; }
+@media (max-width: 900px) {
+  .brand img { width: 46px; }
+  .footer-logo img { width: 80px; }
 }
