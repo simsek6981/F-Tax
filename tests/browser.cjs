@@ -2,10 +2,10 @@ const {chromium}=require('playwright');
 const fs=require('node:fs');
 const assert=require('node:assert/strict');
 const path=require('node:path');
-const out=process.env.FTAX_QA_DIR||path.resolve(__dirname,'../qa');
+const out=process.env.FTAX_QA_DIR||path.resolve(__dirname,'../output/playwright');
 fs.mkdirSync(out,{recursive:true});
 const base=process.env.FTAX_BASE_URL||'http://127.0.0.1:8000/Yilmaz/';
-const report={viewports:[],functional:[],errors:[],requests:new Set()};
+const report={viewports:[],functional:[],errors:[],console:[],requests:new Set()};
 async function check(label,fn){await fn();report.functional.push(label);console.log('PASS: '+label);}
 async function overflow(p){return p.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,over:[...document.querySelectorAll('main *,header *,footer *')].filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&(r.right>innerWidth+1||r.left< -1)&&!e.closest('.form-honeypot,.hero-art,.identity-art')}).map(e=>e.tagName+'.'+e.className).slice(0,8)}));}
 (async()=>{
@@ -13,12 +13,36 @@ async function overflow(p){return p.evaluate(()=>({width:innerWidth,scroll:docum
  const context=await b.newContext({viewport:{width:1440,height:1000},deviceScaleFactor:1});
  const p=await context.newPage();
  p.on('pageerror',e=>report.errors.push(String(e)));
+ p.on('console',m=>{if(['error','warning'].includes(m.type()))report.console.push(m.text());});
  p.on('request',r=>report.requests.add(r.url()));
  for(const width of [360,390,768,1024,1440,1920]){
   await p.setViewportSize({width,height:width<700?844:1000});
   for(const file of ['index.html','steuerberatung.html','ueber-mich.html','impressum.html','datenschutz.html']){
    const response=await p.goto(base+file);assert.equal(response.status(),200);
    await p.evaluate(()=>document.fonts.ready);
+   const copy=await p.locator('body').innerText();
+   assert.doesNotMatch(copy,/\b(wir|uns|unser\w*|mandant\w*|prozessoptimierung|honorar\w*|kostenlos)\b/i);
+   assert.ok(await p.getByRole('link',{name:'Kontakt',exact:true}).first().isVisible()||await p.locator('.header-appointment').isVisible());
+   const brand=await p.locator('.site-header .brand img').evaluate(e=>({source:e.getAttribute('src'),width:e.width,height:e.height,naturalWidth:e.naturalWidth,naturalHeight:e.naturalHeight}));
+   assert.equal(brand.source,'assets/icons/logo.png');
+   assert.ok(Math.abs(brand.width/brand.height-brand.naturalWidth/brand.naturalHeight)<.01,'Reference logo proportions must be preserved');
+   assert.equal(await p.locator('.site-header .brand > span').count(),0,'Logo lettering must come from the supplied image');
+   assert.equal(await p.locator('.header-appointment').getAttribute('aria-label'),'Termin');
+   assert.equal(await p.locator('#navigation').getByRole('link',{name:'Kontakt',exact:true,includeHidden:true}).count(),1);
+   for(const phone of await p.locator('a[href^="tel:"]').all())assert.equal(await phone.getAttribute('href'),'tel:+4368110373970');
+   assert.doesNotMatch(copy,/\+43 676/);
+   if(file==='steuerberatung.html'){assert.equal(await p.locator('.compact-contact').count(),0);assert.equal(await p.locator('.tax-additional .checks li').count(),4);}
+   if(file==='impressum.html')assert.doesNotMatch(copy,/GUT ZU WISSEN/);
+   assert.ok(await p.locator('#navigation').evaluate(e=>[...e.childNodes].filter(n=>n.nodeType===Node.TEXT_NODE).every(n=>!n.textContent.trim())),'Navigation must not contain stray text');
+   assert.deepEqual(await p.locator('main p,main li,main label,main input,main select,main textarea').evaluateAll(items=>items.filter(e=>e.getBoundingClientRect().height>0&&parseFloat(getComputedStyle(e).fontSize)<16&&!e.closest('.form-honeypot')).map(e=>e.tagName+'.'+e.className)),[],'Content text must be at least 16px');
+   if(file==='index.html')assert.equal(await p.locator('h1').innerText(),'Steuern sauber erledigt. Weiter gedacht.');
+   if(file==='ueber-mich.html'){
+    assert.equal(await p.locator('main > *').count(),2);
+    assert.equal(await p.locator('main > section.hero').count(),1);
+    assert.equal(await p.locator('main > div p').count(),1);
+    assert.equal(await p.locator('main article,main aside,main .brand-portrait,main ul').count(),0);
+    assert.match(copy,/Klienten/);
+   }
    for(const part of [0,.5,1]){
     await p.evaluate(f=>scrollTo({top:(document.documentElement.scrollHeight-innerHeight)*f,behavior:'instant'}),part);
     await p.waitForTimeout(30);
@@ -42,6 +66,10 @@ async function overflow(p){return p.evaluate(()=>({width:innerWidth,scroll:docum
   await p.keyboard.press('Escape');assert.equal(await menu.getAttribute('aria-expanded'),'false');assert.ok(await menu.evaluate(e=>e===document.activeElement));
   await menu.click();await p.locator('#navigation').getByRole('link',{name:'Steuerberatung',exact:true}).click();await p.waitForURL('**/steuerberatung.html');
   await menu.click();await p.setViewportSize({width:1024,height:1000});await p.waitForFunction(()=>document.querySelector('.menu-toggle').getAttribute('aria-expanded')==='false');
+ });
+ await check('Contact menu link reaches the visible appointment form',async()=>{
+  await p.locator('#navigation').getByRole('link',{name:'Kontakt',exact:true}).click();
+  await p.waitForURL(base+'index.html#termin');assert.ok(await p.locator('[data-contact-form]').isVisible());
  });
  await check('Invalid form focuses the named field and sends no network request',async()=>{
   await p.goto(base+'#termin');let calls=0;
@@ -85,6 +113,7 @@ async function overflow(p){return p.evaluate(()=>({width:innerWidth,scroll:docum
  });
  await nojs.close();
  assert.deepEqual(report.errors,[]);report.functional.push('No JavaScript page errors');
+ assert.ok(report.console.every(m=>/Failed to load resource: the server responded with a status of (404|500)/.test(m)),JSON.stringify(report.console));report.functional.push('No unexpected console warnings or errors (only mocked HTTP 500 and intentional 404)');
  assert.ok([...report.requests].filter(u=>!u.startsWith(base)).every(u=>u.startsWith('https://api.emailjs.com/')));report.functional.push('Assets, fonts and graphics load locally; EmailJS only at submit (mocked)');
  report.requests=[...report.requests];fs.writeFileSync(path.join(out,'browser-qa.json'),JSON.stringify(report,null,2));
  await b.close();console.log(`PASS: ${report.functional.length} browser checks; ${report.viewports.length} responsive combinations.`);

@@ -84,7 +84,7 @@
     running.clear();
   }
   function startMotion() {
-    if (reduced.matches) return;
+    if (reduced.matches || small.matches) return;
     root.classList.add("motion-enabled");
     if (!("IntersectionObserver" in window) || !pending.size) return;
     try {
@@ -169,6 +169,10 @@
   reduced.addEventListener("change", () => {
     stopMotion();
     if (!reduced.matches) startMotion();
+  });
+  small.addEventListener("change", () => {
+    stopMotion();
+    startMotion();
   });
   startMotion();
 })();

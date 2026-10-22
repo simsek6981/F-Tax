@@ -63,7 +63,7 @@ def verify(root=ROOT,allow_legacy=False):
             if p['target'] not in text or 'http-equiv="refresh"' not in text: errors.append(f'{path.name}: redirect missing')
             continue
         nav=re.search(r'<nav id="navigation"[^>]*>(.*?)</nav>',text,re.S)
-        if not nav or re.findall(r'href="([^"]+)"',nav[1])!=['index.html','steuerberatung.html','ueber-mich.html']: errors.append(f'{path.name}: main navigation must contain exactly three pages')
+        if not nav or re.findall(r'href="([^"]+)"',nav[1])!=['index.html','steuerberatung.html','ueber-mich.html','index.html#termin']: errors.append(f'{path.name}: main navigation must contain the three pages and contact')
         if d.h1!=1 or d.mains!=1: errors.append(f'{path.name}: expected one H1 and main')
         if d.lang!='de-AT': errors.append(f'{path.name}: wrong language')
         if len(d.ids)!=len(set(d.ids)): errors.append(f'{path.name}: duplicate IDs')

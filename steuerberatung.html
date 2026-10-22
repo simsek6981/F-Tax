@@ -31,7 +31,7 @@
     <meta
       name="twitter:description"
       content="Buchhaltung, Jahresabschlüsse, Steuererklärungen und Gründungsberatung mit Ferhat Yilmaz. Lohnverrechnung über Kooperationspartner. Leonding und digital.">
-    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/icons/favicon.png" type="image/png">
 
     <link
       rel="preload"
@@ -124,20 +124,19 @@
       class="brand"
       href="index.html"
       aria-label="F-Tax Steuerberatung GmbH - Startseite"
-      ><img src="assets/icons/logo.svg" width="34" height="39" alt=""><span
-        >F-Tax<small>STEUERBERATUNG GMBH</small></span
-      ></a
+      ><img src="assets/icons/logo.png" width="209" height="354" alt="F - TAX · Steuer Beratung"></a
     >
     <nav id="navigation" aria-label="Hauptnavigation">
       <a href="index.html">Startseite</a
       ><a href="steuerberatung.html" aria-current="page">Steuerberatung</a
-      ><a href="ueber-mich.html">Über mich</a>
+      ><a href="ueber-mich.html">Über mich</a
+      ><a href="index.html#termin">Kontakt</a>
     </nav>
     <a
       class="button header-appointment"
       href="index.html#termin"
-      aria-label="Termin vereinbaren"
-      ><span class="header-label-full">Termin vereinbaren</span
+      aria-label="Termin"
+      ><span class="header-label-full">Termin</span
       ><span class="header-label-short" aria-hidden="true">Termin</span
       ><span aria-hidden="true">↗</span></a
     >
@@ -161,21 +160,15 @@
               <a href="index.html">Startseite</a
               ><span aria-current="page">Steuerberatung</span>
             </nav>
-            <p class="eyebrow hero-enter">
-              STEUERBERATUNG IN LEONDING &amp; LINZ
-            </p>
-            <h1 class="hero-enter">
-              Für klare Zahlen.<br><span>Und gute<br>Entscheidungen.</span>
-            </h1>
-            <p class="hero-lead hero-enter">
-              Buchhaltung, Bilanzierung und Steuerfragen. Verlässlich betreut,
-              verständlich erklärt und auf Ihre Situation abgestimmt.
-            </p>
+            <h1 class="hero-enter">Steuerberatung</h1>
+            <p class="hero-lead hero-enter">Ich begleite Sie bei Buchhaltung, Bilanzierung und Steuerfragen.</p>
             <a class="button button-light hero-enter" href="index.html#termin"
               >Termin vereinbaren <span aria-hidden="true">↗</span></a
             >
           </div>
           <figure class="sub-photo hero-enter">
+            <picture>
+              <source media="(max-width: 680px)" srcset="assets/images/consultation-640.webp">
             <img
               class=""
               src="assets/images/consultation.webp"
@@ -189,24 +182,22 @@
               alt="Besprechung von Auswertungen und Unterlagen"
               fetchpriority="high"
               decoding="async">
-            <figcaption>PERSÖNLICHE BERATUNG. KLARE PERSPEKTIVEN.</figcaption>
+            </picture>
           </figure>
         </div>
       </section>
       <nav class="service-nav" aria-label="Leistungsübersicht">
         <div class="container">
-          <a href="#buchhaltung">01 Buchhaltung</a
-          ><a href="#bilanzierung">02 Bilanzierung</a
-          ><a href="#steuerberatung">03 Steuerberatung</a
-          ><a href="#lohnverrechnung">04 Lohnverrechnung</a
-          ><a href="#digitalisierung">05 Digitalisierung</a>
+          <a href="#buchhaltung">Buchhaltung</a
+          ><a href="#bilanzierung">Bilanzierung</a
+          ><a href="#steuerberatung">Steuerberatung</a
+          ><a href="#lohnverrechnung">Lohnverrechnung</a>
         </div>
       </nav>
       <section class="section service-details">
         <div class="container">
           <article class="service" data-reveal id="buchhaltung">
             <div class="intro">
-              <span class="item-number">01 / LEISTUNGEN</span>
               <h2>Buchhaltung</h2>
               <p>
                 Laufende Finanzbuchhaltung und Einnahmen-Ausgaben-Rechnung. Sie
@@ -218,7 +209,7 @@
               <li><b>Doppelte Buchhaltung</b> für bilanzierende Unternehmen</li>
               <li>
                 <b>Einnahmen-Ausgaben-Rechnung</b> für Einzelunternehmen und
-                Freiberufler
+                Angehörige freier Berufe
               </li>
               <li>
                 <b>Umsatzsteuervoranmeldungen (UVA)</b> und Zusammenfassende
@@ -234,7 +225,6 @@
           </article>
           <article class="service" data-reveal id="bilanzierung">
             <div class="intro">
-              <span class="item-number">02 / LEISTUNGEN</span>
               <h2>Bilanzierung</h2>
               <p>
                 Jahresabschlüsse und Bilanzen, termingerecht erstellt und
@@ -256,7 +246,6 @@
           </article>
           <article class="service" data-reveal id="steuerberatung">
             <div class="intro">
-              <span class="item-number">03 / LEISTUNGEN</span>
               <h2>Steuerberatung</h2>
               <p>
                 Einkommen-, Körperschaft- und Umsatzsteuer, Steuererklärungen,
@@ -286,22 +275,11 @@
           </article>
           <article class="service" data-reveal id="lohnverrechnung">
             <div class="intro">
-              <span class="item-number">04 / LEISTUNGEN</span>
               <h2>Lohnverrechnung</h2>
               <p>Über einen bewährten Kooperationspartner.</p>
             </div>
             <div class="partner">
-              <svg
-                viewBox="0 0 188 215"
-                width="28"
-                height="32"
-                aria-hidden="true"
-                fill="var(--ink)"
-              >
-                <polygon points="2,2 186,2 154,38 2,38" />
-                <polygon points="42,78 122,78 90,112 42,112" />
-                <polygon points="2,78 37,113 37,180 2,213" />
-              </svg>
+              <img class="partner-mark" src="assets/icons/favicon.png" width="209" height="235" alt="">
               <p>
                 Die Lohn- und Gehaltsverrechnung inklusive aller Meldungen, auch
                 bei grenzüberschreitender Beschäftigung, wird von einem
@@ -313,185 +291,15 @@
           </article>
         </div>
       </section>
-      <section class="section mist" id="digitalisierung">
-        <div class="container">
-          <div class="media-split digital-intro">
-            <div data-reveal>
-              <p class="eyebrow">
-                05 / PROZESSOPTIMIERUNG &amp; DIGITALISIERUNG
-              </p>
-              <h2>Weniger Handarbeit.<br>Mehr Überblick.</h2>
-              <p>
-                Belege suchen, Daten doppelt erfassen, Exporte händisch umbauen:
-                Viel Aufwand entsteht schon vor der Buchung. Genau dort setzen
-                wir gemeinsam an.
-              </p>
-              <p>
-                Schritt für Schritt, mit Ihren bestehenden Systemen und bei
-                Bedarf Ihrem IT- oder Softwarepartner.
-              </p>
-            </div>
-            <figure class="cut-image" data-reveal="image">
-              <img
-                class=""
-                src="assets/images/digital.webp"
-                srcset="
-                  assets/images/digital-640.webp  640w,
-                  assets/images/digital.webp     1000w
-                "
-                sizes="(max-width: 760px) 100vw, 48vw"
-                width="1000"
-                height="667"
-                alt="Laptop mit digitalen Auswertungen und Diagrammen"
-                loading="lazy"
-                decoding="async">
-            </figure>
-          </div>
-          <div class="digital-services">
-            <article class="digital-service" data-reveal>
-              <div class="intro">
-                <h3>Abläufe gemeinsam betrachten</h3>
-                <p>
-                  Wir unterstützen Sie dabei, Zeitfresser in Buchhaltung und
-                  Verwaltung zu erkennen.
-                </p>
-              </div>
-              <ul class="checks">
-                <li>Aufnahme des Ist-Ablaufs vom Beleg bis zur Buchung</li>
-                <li>
-                  Benennen von <b>doppelter Erfassung</b> und Medienbrüchen
-                </li>
-                <li>
-                  Einschätzung, was sich mit vertretbarem Aufwand verbessern
-                  lässt
-                </li>
-                <li>Priorisierte Liste mit <b>konkreten Vorschlägen</b></li>
-              </ul>
-            </article>
-            <article class="digital-service" data-reveal>
-              <div class="intro">
-                <h3>Beratung zu Schnittstellen</h3>
-                <p>
-                  Wir begleiten Sie bei der Anbindung und Abstimmung von
-                  Systemen wie BMD, Microsoft Dynamics oder ABAS.
-                </p>
-              </div>
-              <div>
-                <ul class="checks">
-                  <li>
-                    Klären, <b>welche Daten</b> zwischen den Systemen fließen
-                    sollen
-                  </li>
-                  <li>
-                    Abstimmung von <b>Kontenplan</b>, Steuercodes und
-                    Kostenstellen
-                  </li>
-                  <li>Abstimmung mit Ihrem <b>Softwarepartner</b></li>
-                  <li>Prüfung der übergebenen Daten nach dem Start</li>
-                </ul>
-                <div class="systems">
-                  <span class="chip">BMD</span
-                  ><span class="chip">Microsoft Dynamics</span
-                  ><span class="chip">ABAS</span>
-                </div>
-              </div>
-            </article>
-            <article class="digital-service" data-reveal>
-              <div class="intro">
-                <h3>Hilfe bei der Automatisierung</h3>
-                <p>
-                  Wir zeigen Möglichkeiten auf, wiederkehrende Aufgaben z. B.
-                  mit Excel oder Microsoft 365 zu vereinfachen, und unterstützen
-                  bei der Umsetzung.
-                </p>
-              </div>
-              <div>
-                <ul class="checks">
-                  <li>
-                    Excel-Vorlagen und <b>Makros</b> für wiederkehrende
-                    Auswertungen
-                  </li>
-                  <li>
-                    Aufbereitung von <b>Exporten</b> für den Import in die
-                    Buchhaltung
-                  </li>
-                  <li>
-                    Abläufe mit <b>Microsoft 365</b>, etwa automatische Ablage
-                    von E-Mail-Anhängen
-                  </li>
-                  <li>
-                    Einschulung, damit Sie die Lösung selbst weiterverwenden
-                  </li>
-                </ul>
-                <div class="systems">
-                  <span class="chip">Excel</span
-                  ><span class="chip">Microsoft 365</span>
-                </div>
-              </div>
-            </article>
-            <article class="digital-service" data-reveal>
-              <div class="intro">
-                <h3>Digitales Belegwesen</h3>
-                <p>
-                  Wir helfen Ihnen, Belege strukturiert und papierlos abzulegen
-                  und zu übermitteln.
-                </p>
-              </div>
-              <ul class="checks">
-                <li>
-                  Eine <b>klare Ablagestruktur</b>, die alle im Team verstehen
-                </li>
-                <li>
-                  <b>Digitale Übermittlung</b> der Belege an die Buchhaltung
-                </li>
-                <li>Hinweise zur <b>Aufbewahrung</b> digitaler Belege</li>
-                <li>Weniger Rückfragen, weil Belege vollständig ankommen</li>
-              </ul>
-            </article>
-          </div>
-          <div class="process-note" data-reveal>
-            <b>Ein überschaubarer Weg.</b>
-            <p>
-              Wir nehmen Ihre Abläufe auf, priorisieren Verbesserungen nach
-              Nutzen und Aufwand und begleiten die Umsetzung. Sie entscheiden
-              nach jedem Schritt, wie es weitergeht.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section class="section">
-        <div class="container expectation" data-reveal>
-          <div>
-            <p class="eyebrow">VERLÄSSLICH ZUSAMMENARBEITEN</p>
-            <h2>Fachlich sorgfältig.<br>Persönlich verbunden.</h2>
-          </div>
-          <div>
-            <p>
-              Steuerrecht ändert sich laufend. Ich halte mein Fachwissen aktuell
-              und übersetze es in klare Empfehlungen für Ihre Situation.
-            </p>
-            <ul class="line-list">
-              <li>Ein fixer Ansprechpartner für Ihre Fragen</li>
-              <li>Fristen frühzeitig vorbereiten und besprechen</li>
-              <li>Digitale Belege und Besprechungen nach Bedarf</li>
-              <li>Über zehn Jahre Erfahrung in der Unternehmensbetreuung</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      <section class="compact-contact">
+      <section class="section mist tax-additional">
         <div class="container" data-reveal>
-          <div>
-            <p class="eyebrow">DER NÄCHSTE SCHRITT</p>
-            <h2>Lernen wir uns kennen.</h2>
-            <p>
-              Was beschäftigt Sie? Wir besprechen Ihre Fragen – in Leonding oder
-              online.
-            </p>
-          </div>
-          <a class="button button-light" href="index.html#termin"
-            >Erstgespräch anfragen <span aria-hidden="true">↗</span></a
-          >
+          <h2>Gründung und Rechtsformwahl</h2>
+          <ul class="checks">
+            <li>Beratung bei der <b>Gründung</b></li>
+            <li><b>Rechtsformwahl</b>: Einzelunternehmen oder GmbH</li>
+            <li>Beratung bei <b>Umgründungen</b> wie Einbringung, Umwandlung oder Verschmelzung</li>
+            <li>Beratung bei der <b>Betriebsübergabe</b></li>
+          </ul>
         </div>
       </section>
     </main>
@@ -503,30 +311,23 @@
           class="brand footer-logo"
           href="index.html"
           aria-label="F-Tax Startseite"
-          ><img
-            src="assets/icons/logo.svg"
-            width="34"
-            height="39"
-            alt=""><span>F-Tax<small>STEUERBERATUNG GMBH</small></span></a
+          ><img src="assets/icons/logo.png" width="209" height="354" alt="F - TAX · Steuer Beratung"></a
         >
-        <p>
-          Ihre Zahlen. Ihr Unternehmen.<br>Ein persönlicher Ansprechpartner.
-        </p>
       </div>
       <div>
         <p class="eyebrow">KONTAKT</p>
         <a href="mailto:office@f-tax.at">office@f-tax.at</a
-        ><a href="tel:+436766249544">+43 676 624 95 44</a>
+        ><a href="tel:+4368110373970">+43 681 10373970</a>
       </div>
       <div>
-        <p class="eyebrow">IN LEONDING. FÜR SIE DA.</p>
+        <p class="eyebrow">ADRESSE</p>
         <address>Bruno-Gallee-Weg 24/12<br>4060 Leonding, Österreich</address>
-        <p>Persönlich vor Ort &amp; online.</p>
       </div>
       <nav aria-label="Seitenübersicht">
         <a href="index.html">Startseite</a
         ><a href="steuerberatung.html">Steuerberatung</a
-        ><a href="ueber-mich.html">Über mich</a>
+        ><a href="ueber-mich.html">Über mich</a
+        ><a href="index.html#termin">Kontakt</a>
       </nav>
     </div>
     <div class="footer-bottom">

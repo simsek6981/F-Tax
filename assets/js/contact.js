@@ -63,6 +63,8 @@
     notice.hidden = ready;
     if (preview) notice.textContent = 'Vorschau: Sie können das Formular ansehen und ausfüllen. Es werden hier keine E-Mails versendet.';
     const params = new URLSearchParams(root.location ? root.location.search : '');
+    const details = document.querySelector('.request-details');
+    if (details && root.matchMedia?.('(max-width: 900px)').matches) details.open = false;
     if (TOPICS.includes(params.get('thema'))) { form.elements.namedItem('topic').value = params.get('thema'); const details=document.querySelector('.request-details'); if(details)details.open=true; }
     function setStatus(text, state) { status.textContent = text; status.dataset.state = state; }
     function updateCount() { counter.textContent = message.value.length + ' / 4.000'; }

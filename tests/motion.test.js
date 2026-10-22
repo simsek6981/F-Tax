@@ -43,14 +43,21 @@ test('Reveals animate only intersecting elements and never replay',()=>{
   assert.equal(h.animations[0].options.duration,540);assert.ok(h.animations[0].frames[0].opacity>0);
   assert.equal(h.targets[0].attrs.hidden,undefined);
 });
-test('Mobile reveals use shorter travel, shorter duration and no stagger',()=>{
-  const h=harness({mobile:true});h.observers[0].callback(h.targets.map(target=>({target,isIntersecting:true})));
-  for(const a of h.animations){assert.equal(a.options.duration,430);assert.equal(a.options.delay,0);assert.ok(a.frames[0].transform.includes('6px'));}
+test('Smartphones render content immediately without reveal observers or animations',()=>{
+  const h=harness({mobile:true});
+  assert.equal(h.observers.length,0);assert.equal(h.animations.length,0);assert.equal(h.root.classes.has('motion-enabled'),false);
 });
 test('Changing reduced-motion cancels active animation and disconnects observers',()=>{
   const h=harness();h.observers[0].callback([{target:h.targets[0],isIntersecting:true}]);
   const q=h.queries.get('(prefers-reduced-motion: reduce)');q.matches=true;q.events.change();
   assert.equal(h.animations[0].canceled,true);assert.equal(h.root.classes.has('motion-enabled'),false);assert.equal(h.observers[0].disconnected,true);
+});
+
+test('Resizing to a smartphone cancels reveals; resizing back restores desktop enhancement',()=>{
+  const h=harness();h.observers[0].callback([{target:h.targets[0],isIntersecting:true}]);
+  const q=h.queries.get('(max-width: 680px)');q.matches=true;q.events.change();
+  assert.equal(h.animations[0].canceled,true);assert.equal(h.observers[0].disconnected,true);assert.equal(h.root.classes.has('motion-enabled'),false);
+  q.matches=false;q.events.change();assert.equal(h.root.classes.has('motion-enabled'),true);assert.equal(h.observers.length,2);
 });
 test('A focused section does not move; unsupported observers leave the page usable',()=>{
   const h=harness({focused:true});h.observers[0].callback([{target:h.targets[0],isIntersecting:true}]);assert.equal(h.animations.length,0);

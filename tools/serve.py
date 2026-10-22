@@ -29,5 +29,6 @@ if __name__ == '__main__':
     parser.add_argument('--port', type=int, default=8000)
     args = parser.parse_args()
     def handler(*a, **kw): return Handler(*a, directory=str(ROOT), **kw)
-    print(f'Local: http://127.0.0.1:{args.port}{PREFIX}/', flush=True)
-    ThreadingHTTPServer(('127.0.0.1', args.port), handler).serve_forever()
+    server = ThreadingHTTPServer(('127.0.0.1', args.port), handler)
+    print(f'Local: http://127.0.0.1:{server.server_port}{PREFIX}/', flush=True)
+    server.serve_forever()

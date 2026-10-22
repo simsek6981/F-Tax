@@ -6,19 +6,19 @@ Statische Website für Ferhat Yilmaz und die F-Tax Steuerberatung GmbH. **Premiu
 
 | Datei | Inhalt |
 | --- | --- |
-| `index.html` | Kanzlei, Leistungen, Zielgruppen, Arbeitsweise und Terminanfrage |
+| `index.html` | Kanzlei, Leistungen, Kurzbiografie und Terminanfrage |
 | `steuerberatung.html` | Buchhaltung, Bilanzierung, Steuern, Gründung und Partner-Lohnverrechnung |
-| `ueber-mich.html` | Ferhat Yilmaz, Erfahrung, Prüfung, Arbeitsweise |
+| `ueber-mich.html` | Hero und Biografie von Ferhat Yilmaz |
 | `impressum.html`, `datenschutz.html` | Vorhandene rechtliche Entwürfe |
 | `buchhaltung.html`, `bilanzierung.html`, `lohnverrechnung.html`, `kontakt.html` | Statische Weiterleitungen |
 | `assets/css/style.css` | Funktions- und Layoutbasis |
 | `assets/js/main.js` | Menü, Header und Scroll-Reveals |
 | `assets/js/contact.js` | EmailJS, Validierung, Lade- und Fehlerzustände |
-| `assets/images/` | Drei Referenzmotive als WebP in zwei Größen |
+| `assets/images/` | Originalporträt von Ferhat Yilmaz, transparente WebP-Abstufungen und bestehende Referenzmotive |
 | `assets/fonts/` | Lokale variable Manrope-Schrift samt SIL-OFL-Lizenz |
 | `assets/email-templates/contact-notification.html` | HTML-Mail in der Schiefergrau-/Stahlblau-Palette |
 
-Das bereitgestellte Logo bleibt erhalten. Prozessoptimierung ist als ausführlicher Abschnitt der Steuerberatungsseite integriert. Für Ferhat Yilmaz gibt es kein freigegebenes Porträt; die Profilkomposition verwendet daher das echte Markenlogo. Die Fotos illustrieren das Thema und behaupten keine Kanzleiräume oder Mitarbeitenden.
+Das Logo verwendet die bereitgestellte Originalgrafik mit F-Symbol, „F - TAX“ und „STEUER / BERATUNG“, ohne neu gesetzte Schrift. Die unveränderte Referenz liegt in `assets/icons/logo-reference.png`; die verwendete Fassung kürzt lediglich den weißen Außenrand. Die Startseite zeigt das freigegebene Porträt von Ferhat Yilmaz mit Transparenz und ohne Anschnitt. Die übrigen Fotos illustrieren das Thema und behaupten keine Kanzleiräume oder Mitarbeitenden. Die Website konzentriert sich auf Steuerberatung, Buchhaltung, Bilanzierung und Lohnverrechnung über Kooperationspartner. Über mich enthält nur Hero und Biografie.
 
 ## Lokale Vorschau
 
@@ -47,6 +47,19 @@ Das lokale HTML-Template ist **noch nicht automatisch mit EmailJS synchronisiert
 Die Choreografie des Hero-Bereichs läuft ohne Ladebildschirm. Weitere Inhalte erscheinen beim Scrollen einmalig über IntersectionObserver und die native Web Animations API. Die HTML-Inhalte sind stets vorhanden und ohne JavaScript lesbar. `prefers-reduced-motion` deaktiviert Bewegungen. Navigation, Formular und Fokuszustände sind per Tastatur nutzbar.
 
 ## Prüfungen
+
+Playwright ist bereits als Entwicklungsabhängigkeit installiert. Für die automatischen Desktop-, Smartphone- und WCAG-Prüfungen:
+
+```sh
+npm ci
+npm run test:ui
+```
+
+Der Teststarter startet die vorhandene Python-Vorschau auf einem freien lokalen Port und beendet sie nach den Tests. Python muss verfügbar sein (`PYTHON` kann den Interpreter überschreiben). Er nutzt installiertes Playwright-Chromium oder unter Windows vorhandenes Microsoft Edge. Falls beides fehlt: `npx playwright install chromium`. Es werden keine zusätzlichen Testbibliotheken benötigt.
+
+Einzeln: `npm run test:browser`, `npm run test:mobile`, `npm run test:a11y`. Ergebnisse und Screenshots landen standardmäßig in `output/playwright/`. `FTAX_QA_DIR`, `FTAX_BROWSER_CHANNEL` und `FTAX_BASE_URL` überschreiben Ausgabeordner, Browser und eine bereits laufende Vorschau. Alle E-Mail-Antworten werden in den Tests simuliert.
+
+Die Smartphone-Tests prüfen 320, 375, 390, 430 und 768 px mit Touch-Eingabe und zweifacher Pixeldichte. Die bisherigen Desktopprüfungen bleiben erhalten. Details: `docs/QUALITY.md`; Designentscheidungen: `docs/brand-spec.md`.
 
 Ausgeführt:
 
