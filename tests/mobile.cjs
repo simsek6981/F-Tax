@@ -37,7 +37,7 @@ async function layout(page,width){
     if(width<=430)assert.equal(await page.evaluate(()=>document.getAnimations().filter(a=>!('transitionProperty' in a)).length),0);
     if(file==='index.html'){
      const portrait=await page.locator('.hero-portrait img').evaluate(e=>({source:e.currentSrc,fit:getComputedStyle(e).objectFit,transform:getComputedStyle(e).transform,complete:e.complete&&e.naturalWidth>0,clip:getComputedStyle(e.parentElement).clipPath}));
-     assert.match(portrait.source,/ferhat-yilmaz-(640|1149)\.webp$/);assert.equal(portrait.fit,'contain');assert.equal(portrait.clip,'none');assert.equal(portrait.transform,'none');assert.ok(portrait.complete);
+     assert.match(portrait.source,/ferhat-yilmaz-schreibtisch\.png$/);assert.equal(portrait.fit,'contain');assert.equal(portrait.clip,'none');assert.equal(portrait.transform,'none');assert.ok(portrait.complete);
     }
     if(file==='steuerberatung.html'&&width<=430)assert.match(await page.locator('main img').first().evaluate(e=>e.currentSrc),/-640\.webp$/);
     assert.equal(await page.locator('.header-appointment').getAttribute('aria-label'),'Termin');
