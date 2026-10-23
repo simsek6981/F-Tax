@@ -391,15 +391,7 @@ section[id] {
   max-width: 47ch;
   margin-top: 27px;
 }
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.12fr 1fr;
-  gap: 60px;
-  align-items: center;
-  padding-block: 72px 60px;
-  position: relative;
-  z-index: 1;
-}
+
 .hero-copy {
   padding-block: 8px;
 }
@@ -442,16 +434,7 @@ section[id] {
   background: #a9c6e4;
   border-radius: 50%;
 }
-.hero-geometry {
-  position: absolute;
-  left: 34%;
-  top: -12%;
-  width: 700px;
-  opacity: 0.035;
-  transform: rotate(-5deg);
-  color: #fff;
-  pointer-events: none;
-}
+
 .hero-visual {
   position: relative;
   width: 100%;
@@ -1711,10 +1694,7 @@ section[id] {
   }
 }
 @media (min-width: 1700px) {
-  .hero-grid {
-    padding-block: 85px 72px;
-    gap: 95px;
-  }
+  
   .hero-visual {
     height: 575px;
   }
@@ -1724,9 +1704,7 @@ section[id] {
   .hero-lead {
     font-size: 17px;
   }
-  .hero-geometry {
-    left: 40%;
-  }
+  
 }
 @media (max-width: 1150px) {
   .masthead {
@@ -1735,9 +1713,7 @@ section[id] {
   #navigation {
     gap: 25px;
   }
-  .hero-grid {
-    gap: 40px;
-  }
+  
   .hero-visual {
     height: 480px;
   }
@@ -1858,11 +1834,7 @@ section[id] {
   .menu-toggle {
     display: flex;
   }
-  .hero-grid {
-    padding-block: 56px 48px;
-    gap: 32px;
-    grid-template-columns: 1.1fr 1fr;
-  }
+  
   .home-hero h1 {
     font-size: clamp(40px, 5.6vw, 56px);
   }
@@ -2139,11 +2111,7 @@ section[id] {
     padding: 10px 0;
     min-width: 35px;
   }
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 39px;
-    padding-block: 45px 33px;
-  }
+  
   .hero-copy {
     padding-block: 0;
   }
@@ -2215,11 +2183,7 @@ section[id] {
   .hero-bottom > a span {
     font-size: 17px;
   }
-  .hero-geometry {
-    width: 560px;
-    left: 20%;
-    top: 8%;
-  }
+  
   .credentials > .container {
     padding-block: 25px;
     gap: 0;
@@ -2744,7 +2708,6 @@ section[id] {
   .hero-lead {
     color: black;
   }
-  .hero-grid,
   .sub-grid,
   .about-hero-grid {
     display: block;
@@ -2989,4 +2952,54 @@ html:not(.js) .menu-toggle {
 @media (max-width: 680px) {
   .hero-portrait { height: clamp(300px, 85vw, 380px); }
   .about-hero-grid { grid-template-columns: 1fr; }
+}
+
+/* Text-led homepage and shared editorial sections. */
+.text-hero { padding-block: clamp(44px, 6vw, 88px); }
+.text-hero .hero-copy { max-width: 1000px; }
+.home-hero .text-hero h1 { max-width: 17ch; font-size: clamp(38px, 5.7vw, 78px); line-height: 1.08; }
+.text-hero .hero-lead { max-width: 64ch; margin-top: 28px; }
+.hero-summary { border-top: 1px solid #ffffff30; margin-top: 42px; padding-top: 24px; display: flex; justify-content: space-between; gap: 24px; color: var(--on-ink); }
+.hero-summary span { color: var(--blue-light); }
+.hero-summary p { font-size: 16px; }
+.overview-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0 36px; }
+.overview-card { padding: 28px 0; border-top: 1px solid var(--line); }
+.overview-card h3 { font-size: 23px; margin: 16px 0 12px; }
+.overview-card h3 a { display: flex; gap: 16px; justify-content: space-between; }
+.overview-card h3 a:hover { color: var(--accent); }
+.overview-card p { color: var(--muted); font-size: 17px; }
+.service-index { color: var(--accent); font-size: 16px; }
+.approach-section { background: var(--ink); color: #fff; }
+.approach-section h2, .approach-section h3 { color: #fff; }
+.approach-section .eyebrow { color: var(--blue-light); }
+.approach-grid, .profile-intro { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; }
+.approach-grid article + article { margin-top: 28px; padding-top: 24px; border-top: 1px solid #ffffff30; }
+.approach-grid article p { margin-top: 10px; color: var(--on-ink); }
+.profile-intro p + p { margin-top: 20px; }
+.profile-intro .profile-lead { font-size: 23px; line-height: 1.5; color: var(--ink); }
+.profile-intro h2 { font-size: clamp(30px,3vw,43px); }
+.profile-intro h3 { font-size: 23px; margin-bottom: 14px; }
+.profile-intro h3:not(:first-child) { margin-top: 32px; }
+.profile-intro .prose { max-width: none; }
+.career-facts { margin-top: 32px; }
+.career-facts > div { border-top: 1px solid var(--line); padding: 18px 0; }
+.career-facts dt { font: 600 34px Manrope,sans-serif; color: var(--accent); }
+.career-facts dd { font-size: 16px; }
+.about-story .text-link { margin-top: 28px; }
+.footer-logo { background: transparent; padding: 0; }
+.footer-logo img { width: 72px; }
+.page-tax main a { text-decoration: none; }
+.page-tax main .text-link::after { display: none; }
+.page-tax main a:hover { color: var(--accent-ink); }
+.page-tax .hero a:hover { color: var(--ink); }
+@media (max-width: 1024px) {
+ .overview-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+ .approach-grid, .profile-intro { gap: 36px; }
+}
+@media (max-width: 680px) {
+ .overview-grid, .approach-grid, .profile-intro { grid-template-columns: 1fr; }
+ .hero-summary { flex-direction: column; gap: 12px; margin-top: 30px; }
+ .text-hero .hero-actions { margin-top: 28px; }
+ .overview-card { padding-block: 24px; }
+ .profile-intro { gap: 28px; }
 }

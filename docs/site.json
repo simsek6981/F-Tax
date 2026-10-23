@@ -14,7 +14,7 @@
       "file": "steuerberatung.html",
       "label": "Steuerberatung",
       "title": "Steuerberatung für Unternehmen & Privatpersonen | F-Tax Leonding",
-      "description": "Buchhaltung, Jahresabschlüsse, Steuererklärungen und Gründungsberatung mit Ferhat Yilmaz. Lohnverrechnung über Kooperationspartner. Leonding und digital.",
+      "description": "Buchhaltung, Jahresabschlüsse, Steuererklärungen und Gründungsberatung mit Ferhat Yilmaz. Lohnverrechnung nach persönlicher Abstimmung. Leonding und digital.",
       "type": "tax",
       "group": "tax"
     },
@@ -64,6 +64,11 @@
       "file": "lohnverrechnung.html",
       "type": "redirect",
       "target": "steuerberatung.html#lohnverrechnung"
+    },
+    {
+      "file": "kontakt.html",
+      "type": "redirect",
+      "target": "index.html"
     }
   ]
 }

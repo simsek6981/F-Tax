@@ -1,0 +1,2 @@
+# Fachliche Freigabe offen
+Der Partnerhinweis wurde auf ausdrückliche Korrektur entfernt. Die veröffentlichte Liste beschreibt die persönliche Klärung des Anliegens, der Unterlagen und des Umfangs. Die konkrete Durchführung laufender Abrechnungen, Meldungen, Abgabenberechnungen und grenzüberschreitender Fälle ist nicht bestätigt und wird daher nicht zugesagt. Vor einer Erweiterung dieser Liste den tatsächlichen Leistungsumfang bestätigen.

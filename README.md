@@ -7,10 +7,10 @@ Statische Website für Ferhat Yilmaz und die F-Tax Steuerberatung GmbH. **Premiu
 | Datei | Inhalt |
 | --- | --- |
 | `index.html` | Kanzlei, Leistungen, Kurzbiografie und Terminanfrage |
-| `steuerberatung.html` | Buchhaltung, Bilanzierung, Steuern, Gründung und Partner-Lohnverrechnung |
+| `steuerberatung.html` | Buchhaltung, Bilanzierung, Steuern, Gründung und Lohnverrechnung |
 | `ueber-mich.html` | Hero und Biografie von Ferhat Yilmaz |
 | `impressum.html`, `datenschutz.html` | Vorhandene rechtliche Entwürfe |
-| `buchhaltung.html`, `bilanzierung.html`, `lohnverrechnung.html` | Statische Weiterleitungen |
+| `buchhaltung.html`, `bilanzierung.html`, `lohnverrechnung.html`, `kontakt.html` | Statische Weiterleitungen (Kontakt führt nur zur Startseite) |
 | `assets/css/style.css` | Funktions- und Layoutbasis |
 | `assets/js/main.js` | Menü, Header und Scroll-Reveals |
 | `assets/js/contact.js` | EmailJS, Validierung, Lade- und Fehlerzustände |
@@ -18,7 +18,7 @@ Statische Website für Ferhat Yilmaz und die F-Tax Steuerberatung GmbH. **Premiu
 | `assets/fonts/` | Lokale variable Manrope-Schrift samt SIL-OFL-Lizenz |
 | `assets/email-templates/contact-notification.html` | HTML-Mail in der Schiefergrau-/Stahlblau-Palette |
 
-Das Logo verwendet die bereitgestellte Originalgrafik mit F-Symbol, „F - TAX“ und „STEUER / BERATUNG“, ohne neu gesetzte Schrift. Die unveränderte Referenz liegt in `assets/icons/logo-reference.png`; die verwendete Fassung kürzt lediglich den weißen Außenrand. Die Startseite zeigt das freigegebene Porträt von Ferhat Yilmaz mit Transparenz und ohne Anschnitt. Die übrigen Fotos illustrieren das Thema und behaupten keine Kanzleiräume oder Mitarbeitenden. Die Website konzentriert sich auf Steuerberatung, Buchhaltung, Bilanzierung und Lohnverrechnung über Kooperationspartner. Über mich enthält nur Hero und Biografie.
+Das Logo verwendet die bereitgestellte Originalgrafik mit F-Symbol, „F - TAX“ und „STEUER / BERATUNG“, ohne neu gesetzte Schrift. Die unveränderte Referenz liegt in `assets/icons/logo-reference.png`; die verwendete Fassung kürzt lediglich den weißen Außenrand. Die Startseite verwendet einen Text-Hero. Das freigegebene Porträt von Ferhat Yilmaz steht mit Transparenz und ohne Anschnitt auf Über mich. Die übrigen Fotos illustrieren das Thema und behaupten keine Kanzleiräume oder Mitarbeitenden. Die Website konzentriert sich auf Steuerberatung, Buchhaltung, Bilanzierung und Lohnverrechnung nach persönlicher Abstimmung. Über mich gliedert die vorhandene Biografie in Hintergrund und persönlichen Ansatz.
 
 ## Lokale Vorschau
 
@@ -75,5 +75,4 @@ python tools/package.py
 
 Zusätzlich wurden Startseite, Steuerberatung, Über mich, Impressum und Datenschutz im Browser bei 360, 390, 768, 1024, 1440 und 1920 px auf horizontales Überlaufen geprüft. Mobilmenü, Tastaturbedienung, Formularvalidierung sowie lokal simulierte Erfolgs- und Fehlerantworten wurden kontrolliert. Screenshots liegen als gesonderte Aufgabenausgabe vor. Dies sind keine gemessenen Core Web Vitals und kein echter EmailJS-Zustelltest. Details zur Referenz, Umsetzung und Freigabe: `docs/PREMIUM-REDESIGN.md`.
 
-Vor öffentlicher Freigabe sind Firmen-/Kontaktdaten, Biografie, Leistungsdetails, Logo-Rechte und Rechtstexte durch F-Tax zu bestätigen. Die Lohnverrechnung bleibt ausdrücklich als Leistung eines Kooperationspartners bezeichnet.
-
+Vor öffentlicher Freigabe sind Firmen-/Kontaktdaten, Biografie, Leistungsdetails, Logo-Rechte und Rechtstexte durch F-Tax zu bestätigen. Der konkrete Umfang der Lohnverrechnung ist fachlich freizugeben; Spezialleistungen werden nicht behauptet.

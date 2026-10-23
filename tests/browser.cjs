@@ -15,23 +15,23 @@ async function overflow(p){return p.evaluate(()=>({width:innerWidth,scroll:docum
  p.on('pageerror',e=>report.errors.push(String(e)));
  p.on('console',m=>{if(['error','warning'].includes(m.type()))report.console.push(m.text());});
  p.on('request',r=>report.requests.add(r.url()));
- for(const width of [360,390,768,1024,1440,1920]){
+ for(const width of [320,375,390,430,768,1024,1440]){
   await p.setViewportSize({width,height:width<700?844:1000});
   for(const file of ['index.html','steuerberatung.html','ueber-mich.html','impressum.html','datenschutz.html']){
    const response=await p.goto(base+file);assert.equal(response.status(),200);
    await p.evaluate(()=>document.fonts.ready);
    const copy=await p.locator('body').innerText();
    assert.doesNotMatch(copy,/\b(wir|uns|unser\w*|mandant\w*|prozessoptimierung|honorar\w*|kostenlos)\b/i);
-   assert.ok(await p.getByRole('link',{name:'Kontakt',exact:true}).first().isVisible()||await p.locator('.header-appointment').isVisible());
+   assert.ok(await p.locator('.header-appointment').isVisible());
    const brand=await p.locator('.site-header .brand img').evaluate(e=>({source:e.getAttribute('src'),width:e.width,height:e.height,naturalWidth:e.naturalWidth,naturalHeight:e.naturalHeight}));
    assert.equal(brand.source,'assets/icons/logo.png');
    assert.ok(Math.abs(brand.width/brand.height-brand.naturalWidth/brand.naturalHeight)<.01,'Reference logo proportions must be preserved');
    assert.equal(await p.locator('.site-header .brand > span').count(),0,'Logo lettering must come from the supplied image');
    assert.equal(await p.locator('.header-appointment').getAttribute('aria-label'),'Termin');
-   assert.equal(await p.locator('#navigation').getByRole('link',{name:'Kontakt',exact:true,includeHidden:true}).count(),1);
+   assert.equal(await p.locator('#navigation').getByRole('link',{name:'Kontakt',exact:true,includeHidden:true}).count(),0);
    for(const phone of await p.locator('a[href^="tel:"]').all())assert.equal(await phone.getAttribute('href'),'tel:+4368110373970');
    assert.doesNotMatch(copy,/\+43 676/);
-   if(file==='steuerberatung.html'){assert.equal(await p.locator('.compact-contact').count(),0);assert.equal(await p.locator('.tax-additional .checks li').count(),4);}
+   if(file==='steuerberatung.html'){assert.equal(await p.locator('.compact-contact').count(),0);assert.equal(await p.locator('.service').count(),5);assert.equal(await p.locator('#gruendung .checks li').count(),4);}
    if(file==='impressum.html')assert.doesNotMatch(copy,/GUT ZU WISSEN/);
    assert.ok(await p.locator('#navigation').evaluate(e=>[...e.childNodes].filter(n=>n.nodeType===Node.TEXT_NODE).every(n=>!n.textContent.trim())),'Navigation must not contain stray text');
    assert.deepEqual(await p.locator('main p,main li,main label,main input,main select,main textarea').evaluateAll(items=>items.filter(e=>e.getBoundingClientRect().height>0&&parseFloat(getComputedStyle(e).fontSize)<16&&!e.closest('.form-honeypot')).map(e=>e.tagName+'.'+e.className)),[],'Content text must be at least 16px');
@@ -39,7 +39,7 @@ async function overflow(p){return p.evaluate(()=>({width:innerWidth,scroll:docum
    if(file==='ueber-mich.html'){
     assert.equal(await p.locator('main > *').count(),2);
     assert.equal(await p.locator('main > section.hero').count(),1);
-    assert.equal(await p.locator('main > div p').count(),1);
+    assert.equal(await p.locator('.about-story .prose p').count(),2);
     assert.equal(await p.locator('main article,main aside,main .brand-portrait,main ul').count(),0);
     assert.match(copy,/Klienten/);
    }
@@ -58,7 +58,7 @@ async function overflow(p){return p.evaluate(()=>({width:innerWidth,scroll:docum
    }
   }
  }
- await check('30 page/viewport combinations have no horizontal overflow',async()=>assert.equal(report.viewports.length,30));
+ await check('35 page/viewport combinations have no horizontal overflow',async()=>assert.equal(report.viewports.length,35));
  await p.setViewportSize({width:390,height:844});await p.goto(base);
  await check('Mobile menu: open, Escape focus return, link navigation, desktop transition',async()=>{
   const menu=p.locator('.menu-toggle');
@@ -67,8 +67,8 @@ async function overflow(p){return p.evaluate(()=>({width:innerWidth,scroll:docum
   await menu.click();await p.locator('#navigation').getByRole('link',{name:'Steuerberatung',exact:true}).click();await p.waitForURL('**/steuerberatung.html');
   await menu.click();await p.setViewportSize({width:1024,height:1000});await p.waitForFunction(()=>document.querySelector('.menu-toggle').getAttribute('aria-expanded')==='false');
  });
- await check('Contact menu link reaches the visible appointment form',async()=>{
-  await p.locator('#navigation').getByRole('link',{name:'Kontakt',exact:true}).click();
+ await check('Appointment button reaches the visible appointment form',async()=>{
+  await p.locator('.header-appointment').click();
   await p.waitForURL(base+'index.html#termin');assert.ok(await p.locator('[data-contact-form]').isVisible());
  });
  await check('Invalid form focuses the named field and sends no network request',async()=>{
@@ -104,7 +104,7 @@ async function overflow(p){return p.evaluate(()=>({width:innerWidth,scroll:docum
   assert.equal(await p.evaluate(()=>document.getAnimations().length),0);assert.ok(!await p.locator('html').evaluate(e=>e.classList.contains('motion-enabled')));await p.emulateMedia({reducedMotion:'no-preference'});
  });
  await check('Legacy URLs lead to the correct sections; custom nested 404 retains working assets',async()=>{
-  for(const [legacy,target]of [['buchhaltung.html','steuerberatung.html#buchhaltung'],['bilanzierung.html','steuerberatung.html#bilanzierung'],['lohnverrechnung.html','steuerberatung.html#lohnverrechnung']]){await p.goto(base+legacy);await p.waitForURL(base+target);}
+  for(const [legacy,target]of [['buchhaltung.html','steuerberatung.html#buchhaltung'],['bilanzierung.html','steuerberatung.html#bilanzierung'],['lohnverrechnung.html','steuerberatung.html#lohnverrechnung'],['kontakt.html','index.html']]){await p.goto(base+legacy);await p.waitForURL(base+target);}
   const r=await p.goto(base+'missing/nested/page');assert.equal(r.status(),404);assert.ok(await p.locator('h1').isVisible());assert.ok(await p.locator('.brand img').first().evaluate(e=>e.complete&&e.naturalWidth>0));
  });
  const nojs=await b.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});const np=await nojs.newPage();

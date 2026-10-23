@@ -35,7 +35,7 @@ async function layout(page,width){
     for(const fraction of [0,.5,1]){await page.evaluate(f=>scrollTo({top:(document.documentElement.scrollHeight-innerHeight)*f,behavior:'instant'}),fraction);await layout(page,width);}
     await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));
     if(width<=430)assert.equal(await page.evaluate(()=>document.getAnimations().filter(a=>!('transitionProperty' in a)).length),0);
-    if(file==='index.html'){
+    if(file==='ueber-mich.html'){
      const portrait=await page.locator('.hero-portrait img').evaluate(e=>({source:e.currentSrc,fit:getComputedStyle(e).objectFit,transform:getComputedStyle(e).transform,complete:e.complete&&e.naturalWidth>0,clip:getComputedStyle(e.parentElement).clipPath}));
      assert.match(portrait.source,/ferhat-yilmaz-schreibtisch\.png$/);assert.equal(portrait.fit,'contain');assert.equal(portrait.clip,'none');assert.equal(portrait.transform,'none');assert.ok(portrait.complete);
     }
