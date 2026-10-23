@@ -1694,7 +1694,7 @@ section[id] {
   }
 }
 @media (min-width: 1700px) {
-  
+
   .hero-visual {
     height: 575px;
   }
@@ -1704,7 +1704,7 @@ section[id] {
   .hero-lead {
     font-size: 17px;
   }
-  
+
 }
 @media (max-width: 1150px) {
   .masthead {
@@ -1713,7 +1713,7 @@ section[id] {
   #navigation {
     gap: 25px;
   }
-  
+
   .hero-visual {
     height: 480px;
   }
@@ -1834,7 +1834,7 @@ section[id] {
   .menu-toggle {
     display: flex;
   }
-  
+
   .home-hero h1 {
     font-size: clamp(40px, 5.6vw, 56px);
   }
@@ -2111,7 +2111,7 @@ section[id] {
     padding: 10px 0;
     min-width: 35px;
   }
-  
+
   .hero-copy {
     padding-block: 0;
   }
@@ -2183,7 +2183,7 @@ section[id] {
   .hero-bottom > a span {
     font-size: 17px;
   }
-  
+
   .credentials > .container {
     padding-block: 25px;
     gap: 0;
