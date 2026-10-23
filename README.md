@@ -10,7 +10,7 @@ Statische Website für Ferhat Yilmaz und die F-Tax Steuerberatung GmbH. **Premiu
 | `steuerberatung.html` | Buchhaltung, Bilanzierung, Steuern, Gründung und Partner-Lohnverrechnung |
 | `ueber-mich.html` | Hero und Biografie von Ferhat Yilmaz |
 | `impressum.html`, `datenschutz.html` | Vorhandene rechtliche Entwürfe |
-| `buchhaltung.html`, `bilanzierung.html`, `lohnverrechnung.html`, `kontakt.html` | Statische Weiterleitungen |
+| `buchhaltung.html`, `bilanzierung.html`, `lohnverrechnung.html` | Statische Weiterleitungen |
 | `assets/css/style.css` | Funktions- und Layoutbasis |
 | `assets/js/main.js` | Menü, Header und Scroll-Reveals |
 | `assets/js/contact.js` | EmailJS, Validierung, Lade- und Fehlerzustände |
@@ -76,3 +76,4 @@ python tools/package.py
 Zusätzlich wurden Startseite, Steuerberatung, Über mich, Impressum und Datenschutz im Browser bei 360, 390, 768, 1024, 1440 und 1920 px auf horizontales Überlaufen geprüft. Mobilmenü, Tastaturbedienung, Formularvalidierung sowie lokal simulierte Erfolgs- und Fehlerantworten wurden kontrolliert. Screenshots liegen als gesonderte Aufgabenausgabe vor. Dies sind keine gemessenen Core Web Vitals und kein echter EmailJS-Zustelltest. Details zur Referenz, Umsetzung und Freigabe: `docs/PREMIUM-REDESIGN.md`.
 
 Vor öffentlicher Freigabe sind Firmen-/Kontaktdaten, Biografie, Leistungsdetails, Logo-Rechte und Rechtstexte durch F-Tax zu bestätigen. Die Lohnverrechnung bleibt ausdrücklich als Leistung eines Kooperationspartners bezeichnet.
+

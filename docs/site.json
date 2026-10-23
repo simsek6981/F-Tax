@@ -64,11 +64,6 @@
       "file": "lohnverrechnung.html",
       "type": "redirect",
       "target": "steuerberatung.html#lohnverrechnung"
-    },
-    {
-      "file": "kontakt.html",
-      "type": "redirect",
-      "target": "index.html#termin"
     }
   ]
 }

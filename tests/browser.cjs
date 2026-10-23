@@ -104,7 +104,7 @@ async function overflow(p){return p.evaluate(()=>({width:innerWidth,scroll:docum
   assert.equal(await p.evaluate(()=>document.getAnimations().length),0);assert.ok(!await p.locator('html').evaluate(e=>e.classList.contains('motion-enabled')));await p.emulateMedia({reducedMotion:'no-preference'});
  });
  await check('Legacy URLs lead to the correct sections; custom nested 404 retains working assets',async()=>{
-  for(const [legacy,target]of [['buchhaltung.html','steuerberatung.html#buchhaltung'],['bilanzierung.html','steuerberatung.html#bilanzierung'],['lohnverrechnung.html','steuerberatung.html#lohnverrechnung'],['kontakt.html','index.html#termin']]){await p.goto(base+legacy);await p.waitForURL(base+target);}
+  for(const [legacy,target]of [['buchhaltung.html','steuerberatung.html#buchhaltung'],['bilanzierung.html','steuerberatung.html#bilanzierung'],['lohnverrechnung.html','steuerberatung.html#lohnverrechnung']]){await p.goto(base+legacy);await p.waitForURL(base+target);}
   const r=await p.goto(base+'missing/nested/page');assert.equal(r.status(),404);assert.ok(await p.locator('h1').isVisible());assert.ok(await p.locator('.brand img').first().evaluate(e=>e.complete&&e.naturalWidth>0));
  });
  const nojs=await b.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});const np=await nojs.newPage();
