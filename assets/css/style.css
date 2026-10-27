@@ -413,22 +413,20 @@ select:focus-visible {
   object-fit: cover;
   filter: saturate(0.6);
 }
-/* About page: text centred beside the desk photo, which sits on the hero's bottom edge. */
+/* About page: text centred beside the desk photo on a light plate. */
 .about-hero-grid {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
 }
 .hero-portrait {
-  align-self: end;
+  justify-self: end;
+  max-width: 460px;
+  margin-bottom: clamp(56px, 7vw, 104px);
+  padding-top: 0;
+  background: var(--mist);
 }
 .hero-portrait img {
-  width: auto;
-  margin-inline: auto;
-  max-height: 640px;
   object-fit: contain;
-  /* The photo is cropped at the laptop and chair: fade those cut edges into the background. */
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
 }
 
 /* Ledger: heading column left, content right */
@@ -485,26 +483,30 @@ select:focus-visible {
   margin-top: 8px;
 }
 /* Homepage profile: the cut-out portrait stands on the lower edge of the section. */
-.about-home {
-  padding-bottom: 0;
+/* Portrait plate: the cut-out photos are cropped at the bottom (and sides), so they stand
+   on a solid panel whose edges match those crops; the top corner takes the F-logo bevel. */
+.portrait-plate {
+  width: 100%;
+  padding-top: clamp(24px, 4vw, 48px);
+  clip-path: polygon(0 0, calc(100% - 56px) 0, 100% 56px, 100% 100%, 0 100%);
+}
+.portrait-plate img {
+  width: 100%;
 }
 .about-home-grid {
   display: grid;
   grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
   gap: 32px var(--col-gap);
-  align-items: end;
+  align-items: center;
 }
-.about-home-portrait img {
-  width: 100%;
+.about-home-portrait {
   max-width: 420px;
-  margin-inline: auto;
+  background: var(--ink);
 }
 .about-home-copy {
   display: grid;
   gap: 24px;
   justify-items: start;
-  align-self: center;
-  padding-bottom: clamp(64px, 9vw, 128px);
 }
 .about-home-copy .career-facts {
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -1028,10 +1030,11 @@ html:not(.js) [data-contact-notice][hidden] {
   }
   .about-home-copy {
     order: -1;
-    padding-bottom: 0;
   }
-  .about-home-portrait img {
-    max-width: 300px;
+  .about-home-portrait,
+  .hero-portrait {
+    max-width: 360px;
+    justify-self: start;
   }
   .ledger,
   .service,
@@ -1065,9 +1068,6 @@ html:not(.js) [data-contact-notice][hidden] {
   .sub-photo img {
     min-height: 0;
     aspect-ratio: 3 / 2;
-  }
-  .hero-portrait img {
-    max-height: 420px;
   }
   .service-nav .container {
     display: grid;
