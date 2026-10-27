@@ -413,45 +413,21 @@ select:focus-visible {
   object-fit: cover;
   filter: saturate(0.6);
 }
-/* About page: light stage so the cut-out desk photo blends into the background. */
-.about-hero {
-  background: var(--mist);
-  color: var(--text);
-}
-.about-hero h1 {
-  color: var(--ink);
-}
-.about-hero .hero-lead {
-  color: var(--muted);
-}
-.about-hero .breadcrumb {
-  color: var(--muted);
-}
-.about-hero .breadcrumb a {
-  text-decoration-color: #9aa5b4;
-}
-.about-hero .breadcrumb a:hover,
-.about-hero .breadcrumb span {
-  color: var(--ink);
-}
-.about-hero .breadcrumb a::after {
-  color: #9aa5b4;
-}
+/* About page: text centred beside the desk photo, which sits on the hero's bottom edge. */
 .about-hero-grid {
-  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
 }
 .hero-portrait {
   align-self: end;
 }
-.hero-portrait .hero-image {
-  display: flex;
-  justify-content: flex-end;
-}
 .hero-portrait img {
-  width: 100%;
-  max-height: 680px;
-  object-fit: contain;
-  object-position: bottom right;
+  width: auto;
+  margin-inline: auto;
+  max-height: 640px;
+  /* The photo is cropped at the laptop and chair: fade those cut edges into the background. */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
 }
 
 /* Ledger: heading column left, content right */

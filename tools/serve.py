@@ -15,6 +15,11 @@ class Handler(SimpleHTTPRequestHandler):
             path = path[len(PREFIX):] or '/'
         return super().translate_path(path)
 
+    def end_headers(self):
+        # Local preview only: never serve a stale page or stylesheet from the browser cache.
+        self.send_header('Cache-Control', 'no-store')
+        super().end_headers()
+
     def send_error(self, code, message=None, explain=None):
         if code != 404: return super().send_error(code, message, explain)
         content = (ROOT/'404.html').read_bytes()
