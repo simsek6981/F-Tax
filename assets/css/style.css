@@ -461,6 +461,33 @@ select:focus-visible {
 .prose .text-link {
   margin-top: 8px;
 }
+/* Homepage profile: the cut-out portrait stands on the lower edge of the section. */
+.about-home {
+  padding-bottom: 0;
+}
+.about-home-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: 32px var(--col-gap);
+  align-items: end;
+}
+.about-home-portrait img {
+  width: 100%;
+  max-width: 420px;
+  margin-inline: auto;
+}
+.about-home-copy {
+  display: grid;
+  gap: 24px;
+  justify-items: start;
+  align-self: center;
+  padding-bottom: clamp(64px, 9vw, 128px);
+}
+.about-home-copy .career-facts {
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  column-gap: 32px;
+  margin-top: 0;
+}
 .career-facts {
   display: grid;
   width: 100%;
@@ -483,6 +510,7 @@ select:focus-visible {
 }
 .career-facts dd {
   color: var(--muted);
+  overflow-wrap: break-word;
 }
 
 /* Services page */
@@ -970,6 +998,17 @@ html:not(.js) [data-contact-notice][hidden] {
   }
   .menu-toggle[aria-expanded="true"] .menu-lines::after {
     transform: rotate(-45deg);
+  }
+  .about-home-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+  .about-home-copy {
+    order: -1;
+    padding-bottom: 0;
+  }
+  .about-home-portrait img {
+    max-width: 300px;
   }
   .ledger,
   .service,
