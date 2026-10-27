@@ -117,13 +117,26 @@
 </header>
     <main id="main">
       <section class="hero home-hero">
-        <div class="container">
-          <h1>Steuern sauber erledigt. <span>Weiter gedacht.</span></h1>
-          <p class="hero-lead">Buchhaltung, Jahresabschluss und Steuerfragen für Unternehmen und Privatpersonen. Persönlich in Leonding, online in ganz Österreich.</p>
-          <div class="hero-actions">
-            <a class="button button-light" href="#termin">Erstgespräch anfragen</a
-            ><a class="text-link" href="#leistungen">Leistungen ansehen</a>
+        <div class="container home-hero-grid">
+          <div class="home-hero-copy">
+            <h1>Steuern sauber erledigt. <span>Weiter gedacht.</span></h1>
+            <p class="hero-lead">Buchhaltung, Jahresabschluss und Steuerfragen für Unternehmen und Privatpersonen. Persönlich in Leonding, online in ganz Österreich.</p>
+            <div class="hero-actions">
+              <a class="button button-light" href="#termin">Erstgespräch anfragen</a
+              ><a class="text-link" href="#leistungen">Leistungen ansehen</a>
+            </div>
           </div>
+          <figure class="home-hero-photo">
+            <img
+              src="assets/images/digital.webp"
+              srcset="assets/images/digital-640.webp 640w, assets/images/digital.webp 1000w"
+              sizes="(max-width: 900px) 100vw, 40vw"
+              width="1000"
+              height="712"
+              alt="Laptop mit Auswertungen und Diagrammen"
+              fetchpriority="high"
+              decoding="async">
+          </figure>
         </div>
       </section>
       <section class="section" id="leistungen">
@@ -157,13 +170,28 @@
         </div>
       </section>
       <section class="section about-home mist">
-        <div class="container ledger">
-          <div class="ledger-head">
+        <div class="container about-home-grid">
+          <figure class="about-home-portrait">
+            <img
+              src="assets/images/ferhat-yilmaz-640.webp"
+              srcset="
+                assets/images/ferhat-yilmaz-640.webp   640w,
+                assets/images/ferhat-yilmaz-1149.webp 1149w
+              "
+              sizes="(max-width: 900px) 320px, 420px"
+              width="640"
+              height="763"
+              alt="Ferhat Yilmaz"
+              loading="lazy"
+              decoding="async">
+          </figure>
+          <div class="about-home-copy" data-reveal>
             <h2>Ihr Ansprechpartner: Ferhat Yilmaz</h2>
-          </div>
-          <div class="prose" data-reveal>
             <p class="profile-lead">Ich bin Steuerberater und Geschäftsführer der F-Tax Steuerberatung GmbH in Leonding.</p>
-            <p>Seit über zehn Jahren betreue ich Unternehmen unterschiedlicher Branchen, vom Einzelunternehmen bis zur GmbH, seit 2024 als Steuerberater.</p>
+            <dl class="career-facts">
+              <div><dt>10+</dt><dd>Jahre in der Steuerberatung</dd></div>
+              <div><dt>2024</dt><dd>Steuerberater&shy;prüfung abgelegt</dd></div>
+            </dl>
             <p>Ihre Fragen besprechen Sie direkt mit mir, in Leonding oder online. Belege übermitteln Sie digital.</p>
             <a class="text-link" href="ueber-mich.html">Mehr über mich</a>
           </div>
