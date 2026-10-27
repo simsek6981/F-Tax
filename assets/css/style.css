@@ -326,12 +326,31 @@ select:focus-visible {
 .hero .text-link:hover {
   color: var(--blue-light);
 }
-.home-hero .container {
-  padding-block: clamp(80px, 11vw, 168px) clamp(72px, 9vw, 136px);
+.home-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--col-gap);
+  padding-top: clamp(72px, 9vw, 136px);
+}
+.home-hero-copy {
+  container-type: inline-size;
+  padding-bottom: clamp(72px, 9vw, 136px);
+}
+/* Photo spans the copy's height and sits flush on the hero's bottom edge. */
+.home-hero-photo {
+  position: relative;
+}
+.home-hero-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.6);
 }
 /* "Steuern sauber erledigt." is about 10.3em wide: size and width keep the claim on two lines. */
 .home-hero h1 {
-  font-size: clamp(26px, calc((100vw - 2 * var(--gutter)) / 10.8), 88px);
+  font-size: clamp(26px, 100cqi / 10.8, 88px);
   max-width: 10.8em;
   text-wrap: wrap;
 }
@@ -1056,6 +1075,16 @@ html:not(.js) [data-contact-notice][hidden] {
   .sub-photo {
     margin-bottom: 40px;
   }
+  .home-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .home-hero-copy {
+    padding-bottom: 40px;
+  }
+  .home-hero-photo {
+    aspect-ratio: 3 / 2;
+  }
   .sub-photo img {
     min-height: 0;
     aspect-ratio: 3 / 2;
@@ -1089,8 +1118,8 @@ html:not(.js) [data-contact-notice][hidden] {
   body {
     font-size: 17px;
   }
-  .home-hero .container {
-    padding-block: 48px 56px;
+  .home-hero-grid {
+    padding-top: 48px;
   }
   .hero-lead {
     margin-top: 20px;
