@@ -4,7 +4,7 @@ const assert=require('node:assert/strict');
 const path=require('node:path');
 const out=process.env.FTAX_QA_DIR||path.resolve(__dirname,'../output/playwright');
 fs.mkdirSync(out,{recursive:true});
-const base=process.env.FTAX_BASE_URL||'http://127.0.0.1:8000/Yilmaz/';
+const base=process.env.FTAX_BASE_URL||'http://127.0.0.1:8000/F-Tax/';
 const report={viewports:[],functional:[],errors:[],console:[],requests:new Set()};
 async function check(label,fn){await fn();report.functional.push(label);console.log('PASS: '+label);}
 async function overflow(p){return p.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,over:[...document.querySelectorAll('main *,header *,footer *')].filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&(r.right>innerWidth+1||r.left< -1)&&!e.closest('.form-honeypot,.hero-art,.identity-art')}).map(e=>e.tagName+'.'+e.className).slice(0,8)}));}

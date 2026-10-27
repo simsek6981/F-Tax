@@ -13,7 +13,7 @@ release=module('release','prepare-release.py'); checker=module('checker','verify
 with tempfile.TemporaryDirectory(prefix='ftax-release-test-') as tmp:
     copy=Path(tmp)/'website'
     shutil.copytree(ROOT,copy,ignore=shutil.ignore_patterns('.git','.openai','__pycache__','dist','src','templates','build.py'))
-    for url,public in [('https://simsek6981.github.io/Yilmaz/',True),('https://example.com/',True),('https://example.com/preview/',False)]:
+    for url,public in [('https://simsek6981.github.io/F-Tax/',True),('https://example.com/',True),('https://example.com/preview/',False)]:
         release.configure(url,public,copy); checker.verify(copy)
     before=(copy/'index.html').read_bytes()
     for invalid in ['http://example.com/','https://example.com/?key=1','https://name:secret@example.com/']:

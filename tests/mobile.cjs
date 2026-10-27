@@ -1,6 +1,6 @@
 const {chromium}=require('playwright');
 const assert=require('node:assert/strict');const fs=require('node:fs');const path=require('node:path');
-const base=process.env.FTAX_BASE_URL||'http://127.0.0.1:8000/Yilmaz/';
+const base=process.env.FTAX_BASE_URL||'http://127.0.0.1:8000/F-Tax/';
 const out=process.env.FTAX_QA_DIR||path.resolve(__dirname,'../output/playwright');
 const widths=[320,375,390,430,768];
 const pages=['index.html','steuerberatung.html','ueber-mich.html','impressum.html','datenschutz.html','404.html'];
