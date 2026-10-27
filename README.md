@@ -44,7 +44,7 @@ Das lokale HTML-Template ist **noch nicht automatisch mit EmailJS synchronisiert
 
 ## Bewegung und Zugänglichkeit
 
-Die Choreografie des Hero-Bereichs läuft ohne Ladebildschirm. Weitere Inhalte erscheinen beim Scrollen einmalig über IntersectionObserver und die native Web Animations API. Die HTML-Inhalte sind stets vorhanden und ohne JavaScript lesbar. `prefers-reduced-motion` deaktiviert Bewegungen. Navigation, Formular und Fokuszustände sind per Tastatur nutzbar.
+Der Hero-Bereich ist sofort vollständig sichtbar. Weitere Inhalte erscheinen beim Scrollen einmalig über IntersectionObserver und die native Web Animations API. Die HTML-Inhalte sind stets vorhanden und ohne JavaScript lesbar. `prefers-reduced-motion` deaktiviert Bewegungen. Navigation, Formular und Fokuszustände sind per Tastatur nutzbar.
 
 ## Prüfungen
 
