@@ -413,45 +413,20 @@ select:focus-visible {
   object-fit: cover;
   filter: saturate(0.6);
 }
-/* About page: light stage so the cut-out desk photo blends into the background. */
-.about-hero {
-  background: var(--mist);
-  color: var(--text);
-}
-.about-hero h1 {
-  color: var(--ink);
-}
-.about-hero .hero-lead {
-  color: var(--muted);
-}
-.about-hero .breadcrumb {
-  color: var(--muted);
-}
-.about-hero .breadcrumb a {
-  text-decoration-color: #9aa5b4;
-}
-.about-hero .breadcrumb a:hover,
-.about-hero .breadcrumb span {
-  color: var(--ink);
-}
-.about-hero .breadcrumb a::after {
-  color: #9aa5b4;
-}
+/* About page: text centred beside the desk photo on a light plate. */
 .about-hero-grid {
-  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
 }
 .hero-portrait {
-  align-self: end;
-}
-.hero-portrait .hero-image {
-  display: flex;
-  justify-content: flex-end;
+  justify-self: end;
+  max-width: 460px;
+  margin-bottom: clamp(56px, 7vw, 104px);
+  padding-top: 0;
+  background: var(--mist);
 }
 .hero-portrait img {
-  width: 100%;
-  max-height: 680px;
   object-fit: contain;
-  object-position: bottom right;
 }
 
 /* Ledger: heading column left, content right */
@@ -508,26 +483,30 @@ select:focus-visible {
   margin-top: 8px;
 }
 /* Homepage profile: the cut-out portrait stands on the lower edge of the section. */
-.about-home {
-  padding-bottom: 0;
+/* Portrait plate: the cut-out photos are cropped at the bottom (and sides), so they stand
+   on a solid panel whose edges match those crops; the top corner takes the F-logo bevel. */
+.portrait-plate {
+  width: 100%;
+  padding-top: clamp(24px, 4vw, 48px);
+  clip-path: polygon(0 0, calc(100% - 56px) 0, 100% 56px, 100% 100%, 0 100%);
+}
+.portrait-plate img {
+  width: 100%;
 }
 .about-home-grid {
   display: grid;
   grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
   gap: 32px var(--col-gap);
-  align-items: end;
+  align-items: center;
 }
-.about-home-portrait img {
-  width: 100%;
+.about-home-portrait {
   max-width: 420px;
-  margin-inline: auto;
+  background: var(--ink);
 }
 .about-home-copy {
   display: grid;
   gap: 24px;
   justify-items: start;
-  align-self: center;
-  padding-bottom: clamp(64px, 9vw, 128px);
 }
 .about-home-copy .career-facts {
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -1051,10 +1030,11 @@ html:not(.js) [data-contact-notice][hidden] {
   }
   .about-home-copy {
     order: -1;
-    padding-bottom: 0;
   }
-  .about-home-portrait img {
-    max-width: 300px;
+  .about-home-portrait,
+  .hero-portrait {
+    max-width: 360px;
+    justify-self: start;
   }
   .ledger,
   .service,
@@ -1088,9 +1068,6 @@ html:not(.js) [data-contact-notice][hidden] {
   .sub-photo img {
     min-height: 0;
     aspect-ratio: 3 / 2;
-  }
-  .hero-portrait img {
-    max-height: 420px;
   }
   .service-nav .container {
     display: grid;
