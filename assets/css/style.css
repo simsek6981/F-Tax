@@ -425,6 +425,7 @@ select:focus-visible {
   width: auto;
   margin-inline: auto;
   max-height: 640px;
+  object-fit: contain;
   /* The photo is cropped at the laptop and chair: fade those cut edges into the background. */
   -webkit-mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
   mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
