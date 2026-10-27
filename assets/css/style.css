@@ -394,18 +394,45 @@ select:focus-visible {
   object-fit: cover;
   filter: saturate(0.6);
 }
+/* About page: light stage so the cut-out desk photo blends into the background. */
+.about-hero {
+  background: var(--mist);
+  color: var(--text);
+}
+.about-hero h1 {
+  color: var(--ink);
+}
+.about-hero .hero-lead {
+  color: var(--muted);
+}
+.about-hero .breadcrumb {
+  color: var(--muted);
+}
+.about-hero .breadcrumb a {
+  text-decoration-color: #9aa5b4;
+}
+.about-hero .breadcrumb a:hover,
+.about-hero .breadcrumb span {
+  color: var(--ink);
+}
+.about-hero .breadcrumb a::after {
+  color: #9aa5b4;
+}
+.about-hero-grid {
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+}
 .hero-portrait {
   align-self: end;
 }
 .hero-portrait .hero-image {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 .hero-portrait img {
   width: 100%;
-  max-height: 560px;
+  max-height: 680px;
   object-fit: contain;
-  object-position: bottom center;
+  object-position: bottom right;
 }
 
 /* Ledger: heading column left, content right */
