@@ -26,12 +26,12 @@ Das Logo verwendet die bereitgestellte Originalgrafik mit F-Symbol, „F - TAX�
 python tools/serve.py
 ```
 
-Vorschau: `http://127.0.0.1:8000/Yilmaz/`. Die Root-Dateien funktionieren ohne Build auf GitHub Pages. `.nojekyll`, Weiterleitungen, Canonicals, strukturierte Daten und die vorhandene Pages-Konfiguration bleiben erhalten.
+Vorschau: `http://127.0.0.1:8000/F-Tax/`. Die Root-Dateien funktionieren ohne Build auf GitHub Pages. `.nojekyll`, Weiterleitungen, Canonicals, strukturierte Daten und die vorhandene Pages-Konfiguration bleiben erhalten.
 
 Der gegenwärtige Modus in `docs/site.json` ist `preview`: öffentliche Seiten tragen `noindex`, die Sitemap ist deshalb leer. Das ist der bereits vorhandene Freigabestatus. Für eine öffentliche Freigabe nach Prüfung der Unternehmens- und Rechtstexte:
 
 ```sh
-python tools/prepare-release.py --public --base-url https://simsek6981.github.io/Yilmaz/
+python tools/prepare-release.py --public --base-url https://simsek6981.github.io/F-Tax/
 ```
 
 Bei einer bestätigten eigenen Domain stattdessen deren wirkliche HTTPS-Adresse verwenden. Eine Veröffentlichung oder Indexierungsfreigabe erfolgt nicht automatisch durch dieses Redesign.

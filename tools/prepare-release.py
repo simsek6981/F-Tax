@@ -23,7 +23,7 @@ def configure(base_url,public=False,root=ROOT):
         robots='index, follow' if public and page['type'] not in ('legal','redirect') else 'noindex, nofollow'
         if page['type']=='redirect': robots='noindex, follow'
         text=re.sub(r'<meta name="robots" content="[^"]*">',f'<meta name="robots" content="{robots}">',text)
-        if page['file']=='404.html': text=re.sub(r'<base href="[^"]*">',f'<base href="{urlsplit(base).path}">',text)
+        if page['file']=='404.html': text=re.sub(r'<base href="[^"]*"\s*/?>',f'<base href="{urlsplit(base).path}">',text)
         path.write_text(text,encoding='utf-8',newline='\n')
     urls=[base+('' if p['file']=='index.html' else p['file']) for p in settings['pages'] if p['type'] not in ('legal','redirect')] if public else []
     xml='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('  <url><loc>'+escape(u)+'</loc></url>\n' for u in urls)+'</urlset>\n'
